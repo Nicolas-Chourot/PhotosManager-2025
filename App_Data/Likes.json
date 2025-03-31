@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "UserId": 1,
+    "PhotoId": 4,
+    "CreationDate": "2025-03-08T10:23:28.8451203-05:00"
+  },
+  {
+    "Id": 4,
+    "UserId": 1,
+    "PhotoId": 3,
+    "CreationDate": "2025-03-08T10:52:05.7233104-05:00"
+  },
+  {
+    "Id": 10,
+    "UserId": 2,
+    "PhotoId": 3,
+    "CreationDate": "2025-03-08T11:27:27.8409707-05:00"
+  },
+  {
+    "Id": 11,
+    "UserId": 1,
+    "PhotoId": 5,
+    "CreationDate": "2025-03-08T11:29:18.4613642-05:00"
+  },
+  {
+    "Id": 12,
+    "UserId": 1,
+    "PhotoId": 7,
+    "CreationDate": "2025-03-30T17:58:43.5602745-04:00"
+  },
+  {
+    "Id": 13,
+    "UserId": 5,
+    "PhotoId": 5,
+    "CreationDate": "2025-03-30T18:13:34.6985151-04:00"
+  }
+]
