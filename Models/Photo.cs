@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace PhotosManager.Models
@@ -21,7 +22,25 @@ namespace PhotosManager.Models
         public string Description { get; set; }     // Description de la photo
         public DateTime CreationDate { get; set; }  // Date de création
         public bool Shared { get; set; }            // Indicateur de partage ("true" ou "false")
-        public int Likes { get; set; }              // compte des likes
+
+        [JsonIgnore]
+        public List<Like> Likes
+        {
+            get { return DB.Likes.ToList().Where(l => l.PhotoId == Id).ToList(); }
+        }
+        [JsonIgnore]
+        public string UsersLikesList
+        {
+            get
+            {
+                string UsersLikesList = "";
+                foreach (var like in Likes)
+                {
+                    UsersLikesList += DB.Users.Get(like.UserId).Name + "\n";
+                }
+                return UsersLikesList;
+            }
+        }
         [ImageAsset(PhotosFolder, DefaultPhoto)]
         public string Image { get; set; }           // Url relatif de l'image
 

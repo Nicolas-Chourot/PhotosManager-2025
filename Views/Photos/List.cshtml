@@ -1,50 +1,15 @@
 ﻿
-@model IEnumerable<PhotosManager.Models.Photo>
 @{
     ViewBag.Title = "Liste des photos";
-    var connectedUser = (PhotosManager.Models.User)Session["ConnectedUser"];
 }
 
-<div class='photosLayout'>
+<div id="PhotosPanel" class='photosLayout'> <!-- Auto refreshed panel --></div>
 
-    @foreach (var photo in Model)
-    {
-        if (connectedUser.IsAdmin || photo.Shared || photo.OwnerId == connectedUser.Id)
-        {
-            bool writeAccess = connectedUser.IsAdmin || photo.OwnerId == connectedUser.Id;
-            <div class="photoLayout">
-                <div class="photoTitleContainer" title="@photo.Description">
-                    <div class="photoTitle ellipsis">@photo.Title</div>
-                </div>
-                <a href="/Photos/Details/@photo.Id" title="Afficher les détails de @photo.Title" class="photDetailsLink">
-                    <div class="photoImage" style="background-image:url('@photo.Image')">
-                        <div class="UserSmallAvatar transparentBackground" style="background-image: url('@photo.Owner.Avatar')" title="@photo.Owner.Name"></div>
-                        @if (writeAccess && photo.Shared)
-                        {
-                            <div class="UserSmallAvatar transparentBackground" style="background-image:url('/Content/UI-Images/shared.png')" title="partagée"></div>
-                        }
-                    </div>
-                    <div class="photoCreationDate">
-                        @Helper.When(photo.CreationDate)
-                        <div class="likesSummary">
-                            @photo.Likes
-                            <i class="cmdIconSmall fa-regular fa-thumbs-up"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        }
-    }
-</div>
-@section Scripts
-{
-    <script defer>
-        initTimeout(520);
-        $("#setPhotoOwnerSearchIdCmd").on("click", function () {
-            window.location = "/Photos/SetPhotoOwnerSearchId?id=" + $("#userSelector").val();
-        });
-        $("#setSearchKeywordsCmd").on("click", function () {
-            window.location = "/Photos/SetSearchKeywords?keywords=" + $("#keywords").val();
-        });
+@section Scripts {
+   <script>
+
+       $(() => {
+           let PhotosPanel = new AutoRefreshedPanel("PhotosPanel", "/Photos/GetPhotos", 5);
+       })
     </script>
 }

@@ -15,7 +15,6 @@ namespace PhotosManager.Models
             if (like != null)
             {
                 BeginTransaction();
-                photo.Likes--;
                 DB.Photos.Update(photo);
                 Delete(like.Id);
                 EndTransaction();
@@ -23,7 +22,6 @@ namespace PhotosManager.Models
             else
             {
                 BeginTransaction();
-                photo.Likes++;
                 DB.Photos.Update(photo);
                 like = new Like { PhotoId = photoId, UserId = userId };
                 Add(like);
@@ -40,7 +38,6 @@ namespace PhotosManager.Models
             List<Like> list = ToList().Where(l => l.UserId == userId).ToList();
             list.ForEach(l => {
                 Photo photo = DB.Photos.Get(l.PhotoId);
-                photo.Likes--;
                 DB.Photos.Update(photo);
                 Delete(l.Id);
             });

@@ -240,6 +240,7 @@
     <Content Include="Views\Photos\Create.cshtml" />
     <Content Include="Views\Photos\List.cshtml" />
     <Content Include="Views\Photos\Details.cshtml" />
+    <Content Include="Views\Photos\GetPhotos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />

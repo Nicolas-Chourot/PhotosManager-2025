@@ -24,60 +24,17 @@ namespace PhotosManager.Controllers
             Session["searchKeywords"] = keywords;
             return RedirectToAction("List");
         }
-        public ActionResult List(string sortType)
-        { 
-           
-            /* 
-            if (Session["photoOwnerSearchId"] == null) Session["photoOwnerSearchId"] = 0;
-            if (Session["searchKeywords"] == null) Session["searchKeywords"] = "";
-            if (Session["PhotosSortType"] == null) Session["PhotosSortType"] = "date";
-            if (!string.IsNullOrEmpty(sortType)) Session["PhotosSortType"] = sortType;
-            List<Photo> list;
-            switch ((string)Session["PhotosSortType"])
-            {
-                case "likes":
-                    list = DB.Photos.ToList().OrderByDescending(p => p.Likes).ThenByDescending(p => p.CreationDate).ToList();
-                    break;
-                case "owner":
-                    list = DB.Photos.ToList().Where(p => p.OwnerId == ((User)Session["ConnectedUser"]).Id).OrderByDescending(p => p.CreationDate).ToList();
-                    break;
-                case "user":
-                    if ((int)Session["photoOwnerSearchId"] != 0)
-                        list = DB.Photos.ToList().Where(p => p.OwnerId == (int)Session["photoOwnerSearchId"]).OrderByDescending(p => p.CreationDate).ToList();
-                    else
-                        list = DB.Photos.ToList().OrderBy(p => p.Owner.Name).ThenByDescending(p => p.CreationDate).ToList();
-                    break;
-                case "keywords":
-                    if (!string.IsNullOrEmpty((string)Session["searchKeywords"]))
-                    {
-                        list = new List<Photo>();
-                        string[] keywords = ((string)Session["searchKeywords"]).Split(' ');
-                        foreach (var photo in DB.Photos.ToList())
-                        {
-                            bool keep = true;
-                            foreach (string keyword in keywords)
-                            {
-                                string kw = keyword.Trim().ToLower();
-                                if (!photo.Title.ToLower().Contains(kw) && !photo.Description.ToLower().Contains(kw))
-                                {
-                                    keep = false;
-                                    break;
-                                }
-                            }
-                            if (keep)
-                                list.Add(photo);
-                        }
-                        list = list.OrderByDescending(p => p.CreationDate).ToList();
-                    }
-                    else
-                        list = DB.Photos.ToList().OrderByDescending(p => p.CreationDate).ToList();
-                    break;
-                default:
-                    list = DB.Photos.ToList().OrderByDescending(p => p.CreationDate).ToList();
-                    break;
-            }*/
-
-            return View(DB.Photos.ToList().OrderByDescending(p => p.CreationDate).ToList());
+        public ActionResult GetPhotos(bool forceRefresh = false)
+        {
+            if (forceRefresh || DB.Photos.HasChanged || DB.Likes.HasChanged || DB.Users.HasChanged)
+            {               
+                return PartialView(DB.Photos.ToList().OrderByDescending(p => p.CreationDate).ToList());
+            }
+            return null;
+        }
+        public ActionResult List()
+        {
+            return View();
         }
         public ActionResult Create()
         {
@@ -119,7 +76,6 @@ namespace PhotosManager.Controllers
             {
                 Photo storedPhoto = DB.Photos.Get((int)Session["id"]);
                 photo.Id = storedPhoto.Id;
-                photo.Likes = storedPhoto.Likes;
                 photo.OwnerId = storedPhoto.OwnerId;
                 photo.CreationDate = storedPhoto.CreationDate;
                 DB.Photos.Update(photo);

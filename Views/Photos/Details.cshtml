@@ -8,12 +8,6 @@
 
     string photoLikedByConnectedUser = userLike ? "fa" : "fa-regular";
 
-    string likesUsersList = "";
-
-    foreach (var like in PhotosManager.Models.DB.Likes.ToList().Where(l => l.PhotoId == Model.Id))
-    {
-        likesUsersList += PhotosManager.Models.DB.Users.Get(like.UserId).Name + "\n";
-    }
 }
 
 <div class="content">
@@ -27,12 +21,12 @@
     <div class="photoDetailsCreationDate">
         @Helper.When(Model.CreationDate)
         <div class="likesSummary" >
-            @Model.Likes
+            @Model.Likes.Count()
             <a href="/Photos/TogglePhotoLike/@Model.Id" 
                style="text-decoration:none; font-size:1.1em" 
                class="cmdIconSmall @photoLikedByConnectedUser fa-thumbs-up" 
                id="addRemoveLikeCmd" 
-               title="@Html.Raw(likesUsersList)">
+               title="@Html.Raw(Model.UsersLikesList)">
             </a>
         </div>
         <div class="photoDetailsDescription">@Model.Description</div>

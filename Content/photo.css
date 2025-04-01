@@ -2,7 +2,6 @@
 }
 
 .photosLayout {
-    flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, 360px);
     gap: 10px;
@@ -10,7 +9,6 @@
 }
 
 .photoLayout {
-    flex: 1;
     scroll-snap-align: start;
     margin: 0px;
 }
@@ -120,7 +118,6 @@
     flex-direction: column;
     gap: 8px;
     margin-top: 20px;
-
     align-content:center;
 }
 
