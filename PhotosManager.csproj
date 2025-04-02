@@ -191,6 +191,7 @@
     <Content Include="App_Code\Helper.cshtml" />
     <Content Include="App_Data\Likes.json" />
     <Content Include="App_Data\Photos.json" />
+    <None Include="Properties\PublishProfiles\PhotosManager2025 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\imageControl-2.0.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
@@ -242,9 +243,7 @@
     <Content Include="Views\Photos\Details.cshtml" />
     <Content Include="Views\Photos\GetPhotos.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
