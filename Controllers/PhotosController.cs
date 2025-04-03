@@ -91,7 +91,7 @@ namespace PhotosManager.Controllers
                 Session["id"] = id;
                 User connectedUser = ((User)Session["ConnectedUser"]);
                 Session["IsOwner"] = connectedUser.IsAdmin || photo.OwnerId == connectedUser.Id;    
-                if (connectedUser.IsAdmin || photo.Shared)
+                if ((bool)Session["IsOwner"] || photo.Shared)
                     return View(photo);
                 else
                     return Redirect(IllegalAccessUrl);

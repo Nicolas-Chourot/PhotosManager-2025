@@ -136,7 +136,9 @@
     <Content Include="App_Assets\Users\b92612bf-1e79-40df-81c8-9dcd31a129f7.jpeg" />
     <Content Include="App_Assets\Users\no_avatar.png" />
     <Content Include="App_Data\iso-3166.txt" />
+    <Content Include="App_Data\Likes.json" />
     <Content Include="App_Data\Logins.json" />
+    <Content Include="App_Data\Photos.json" />
     <Content Include="App_Data\RenewPasswordCommands.json" />
     <Content Include="App_Data\UnverifiedEmails.json" />
     <Content Include="App_Data\Users.json" />
@@ -189,8 +191,6 @@
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="App_Code\Helper.cshtml" />
-    <Content Include="App_Data\Likes.json" />
-    <Content Include="App_Data\Photos.json" />
     <None Include="Properties\PublishProfiles\PhotosManager2025 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\imageControl-2.0.js" />
