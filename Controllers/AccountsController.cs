@@ -232,7 +232,7 @@ namespace PhotosManager.Controllers
             if (newEmail)
                 return Redirect("/Accounts/Login?message=Un courriel de vérification d'adresse de courriel vous a été envoyé!");
             else
-                return RedirectToAction("Index", "Students");
+                return RedirectToAction("List", "Photos");
         }
         [UserAccess]
         public ActionResult DeleteProfil()
