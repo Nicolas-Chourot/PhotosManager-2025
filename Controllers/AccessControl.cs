@@ -18,7 +18,7 @@ namespace PhotosManager.Controllers
                     User connectedUser = (User)HttpContext.Current.Session["ConnectedUser"];
                     if (connectedUser == null)
                     {
-                        httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé!&success=false");
+                        ///httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé XXX!&success=false");
                         return false;
                     }
                     else
@@ -33,7 +33,7 @@ namespace PhotosManager.Controllers
                 }
                 catch (Exception ex)
                 {
-                    httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé!&success=false");
+                    httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé WWW!&success=false");
                     return false;
                 }
             }
@@ -47,7 +47,7 @@ namespace PhotosManager.Controllers
                     User connectedUser = (User)HttpContext.Current.Session["ConnectedUser"];
                     if (connectedUser == null)
                     {
-                        httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé!&success=false");
+                        //httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé!&success=false");
                         return false;
                     }
                     else
@@ -70,7 +70,7 @@ namespace PhotosManager.Controllers
                 }
                 catch (Exception ex)
                 {
-                    httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé!&success=false");
+                    httpContext.Response.Redirect("/Accounts/Login?message=Accès non autorisé YYY!&success=false");
                     return false;
                 }
             }

@@ -64,8 +64,12 @@ namespace PhotosManager.Models
                     if (online)
                         HttpContext.Current.Session["CurrentLoginId"] = DB.Logins.Add(user.Id).Id;
                     else
-                        if (HttpContext.Current != null)
-                        DB.Logins.UpdateLogout((int)HttpContext.Current.Session["CurrentLoginId"]);
+                    {
+                        if (HttpContext.Current != null && HttpContext.Current.Session["CurrentLoginId"] != null)
+                        {
+                            DB.Logins.UpdateLogout((int)HttpContext.Current.Session["CurrentLoginId"]);
+                        }
+                    }
                 }
             }
         }

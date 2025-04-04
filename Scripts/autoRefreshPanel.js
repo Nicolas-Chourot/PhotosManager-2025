@@ -29,7 +29,7 @@ class AutoRefreshedPanel {
                 statusCode: {
                     401: function () {
                         if (EndSessionAction != "")
-                            window.location = EndSessionAction + "?message=Votre compte a été bloqué par le webmestre!&success=false";
+                            window.location = EndSessionAction + "?message=Votre session a été fermée!&success=false";
                         else
                             alert("Illegal access!");
                     }
