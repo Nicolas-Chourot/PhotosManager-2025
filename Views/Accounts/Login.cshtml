@@ -48,7 +48,8 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(() => {
-            noTimeout();
+            //noTimeout();
+            initSessionTimeout(1500 * 60 /*seconds*/);
             // Set client local time zone
             $("#TimeZoneOffset").val(new Date().getTimezoneOffset() / 60);
 
