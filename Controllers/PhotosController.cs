@@ -34,6 +34,8 @@ namespace PhotosManager.Controllers
         }
         public ActionResult List()
         {
+            Session["id"] = null;
+            Session["IsOwner"] = null;
             return View();
         }
         public ActionResult Create()
@@ -51,7 +53,7 @@ namespace PhotosManager.Controllers
         }
         public ActionResult Edit()
         {
-            if (Session["id"] != null)
+            if (Session["id"] != null && Session["IsOwner"] != null && (bool)Session["IsOwner"])
             {
                 int id = (int)Session["id"];
                 Photo photo = DB.Photos.Get(id);
@@ -100,7 +102,7 @@ namespace PhotosManager.Controllers
         }
         public ActionResult Delete()
         {
-            if (Session["id"] != null)
+            if (Session["IsOwner"] != null ? (bool)Session["IsOwner"] : false)
             {
                 int id = (int)Session["id"];
                 Photo photo = DB.Photos.Get(id);
