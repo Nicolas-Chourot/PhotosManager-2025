@@ -24,10 +24,8 @@ namespace PhotosManager.Models
         public bool Shared { get; set; }            // Indicateur de partage ("true" ou "false")
 
         [JsonIgnore]
-        public List<Like> Likes
-        {
-            get { return DB.Likes.ToList().Where(l => l.PhotoId == Id).ToList(); }
-        }
+        public List<Like> Likes => DB.Likes.ToList().Where(l => l.PhotoId == Id).ToList(); 
+        
         [JsonIgnore]
         public string UsersLikesList
         {
@@ -52,12 +50,6 @@ namespace PhotosManager.Models
             Image = PhotosFolder + DefaultPhoto;
         }
         [JsonIgnore]
-        public User Owner
-        {
-            get
-            {
-                return DB.Users.Get(OwnerId);
-            }
-        }
+        public User Owner => DB.Users.Get(OwnerId);
     }
 }

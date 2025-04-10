@@ -31,16 +31,12 @@ namespace PhotosManager.Models
         public void DeleteByPhotoId(int photoId)
         {
             List<Like> list = ToList().Where(l => l.PhotoId == photoId).ToList();
-            list.ForEach(l => { Delete(l.Id); });
+            list.ForEach(l => Delete(l.Id));
         }
         public void DeleteByUserId(int userId)
         {
             List<Like> list = ToList().Where(l => l.UserId == userId).ToList();
-            list.ForEach(l => {
-                Photo photo = DB.Photos.Get(l.PhotoId);
-                DB.Photos.Update(photo);
-                Delete(l.Id);
-            });
+            list.ForEach(l => Delete(l.Id));
         }
     }
 }

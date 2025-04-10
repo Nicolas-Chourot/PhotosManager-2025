@@ -169,6 +169,7 @@ namespace PhotosManager.Models
                     BeginTransaction();
                     userToDelete.DeleteLogins();
                     userToDelete.DeletePhotos();
+                    DB.Likes.DeleteByUserId(userToDelete.Id);
                     base.Delete(userId);
                     EndTransaction();
                     return true;
