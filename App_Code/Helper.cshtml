@@ -332,17 +332,20 @@
     }
     else
     {
-        if (span.Hours > 1)
+        if (span.Hours >= 1)
         {
-            <span>Il y a @span.Hours heures</span> }
+            <span>Il y a @span.Hours heures</span>
+        }
         else
         {
-            if (span.Minutes > 1)
+            if (span.Minutes >= 1)
             {
-                <span>Il y a @span.Minutes minutes</span> }
+                <span>Il y a @span.Minutes minutes</span>
+            }
             else
             {
-                <span>à l'instant</span>}
+                <span>à l'instant</span>
+            }
         }
     }
 }
