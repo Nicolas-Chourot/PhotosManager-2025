@@ -312,22 +312,23 @@
         }
     }
 }
-@helper When(DateTime date, bool showtime = true)
+@helper When(DateTime date, bool showtime = false)
 {
     TimeSpan span = DateTime.Now.Subtract(date);
     DateTime localTime = date; //date.Subtract(new TimeSpan((int)Session["TimeZoneOffset"], 0, 0));
+    string lds = localTime.ToLongDateString();
+    lds = char.ToUpper(lds[0]) + lds.Substring(1).ToLower();
     if (span.Days > 0)
     {
         if (showtime)
         {
-            <span>@localTime.ToLongDateString() - @localTime.ToShortTimeString()</span>
+            <span>@lds - @localTime.ToShortTimeString()</span>
         }
         else
         {
-            <div style="display:grid; grid-template-columns:auto 30px;">
-                <div>@localTime.ToLongDateString()&nbsp;</div>
-                <div class="glyphicon glyphicon-time smallGlyphicon" title="@localTime.ToShortTimeString()" data-placement="right"></div>
-            </div>
+
+            <div title="@localTime.ToShortTimeString()">@lds&nbsp;</div>
+
         }
     }
     else
